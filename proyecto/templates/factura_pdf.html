@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .invoice-box {
+            width: 80%;
+            margin: auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .invoice-box h2 {
+            text-align: center;
+            color: #6A1B9A;
+        }
+        .invoice-box p {
+            font-size: 1.1em;
+            color: #333;
+        }
+        .invoice-box strong {
+            color: #6A1B9A;
+        }
+        .details-table, .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .details-table th, .details-table td, .products-table th, .products-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .details-table th, .products-table th {
+            background-color: #6A1B9A;
+            color: white;
+        }
+        .products-table td {
+            border-right: 1px solid #ddd;
+        }
+        .products-table td:last-child {
+            border-right: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <h2>Factura</h2>
+        <table class="details-table">
+            <tr>
+                <th>Fecha de Compra:</th>
+                <td>{{ fecha }}</td>
+            </tr>
+            <tr>
+                <th>Comprador:</th>
+                <td>{{ compra.usuario.nombre_usuario }}</td>
+            </tr>
+            <tr>
+                <th>Método de Pago:</th>
+                <td>{{ compra.metodo_pago }}</td>
+            </tr>
+            {% if compra.metodo_pago == 'efectivo' %}
+            <tr>
+                <th>Descuento aplicado:</th>
+                <td>${{ descuento }}</td>
+            </tr>
+            {% elif compra.metodo_pago == 'tarjeta' %}
+            <tr>
+                <th>Incremento aplicado:</th>
+                <td>${{ incremento }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Total Pagado:</th>
+                <td>${{ compra.total }}</td>
+            </tr>
+        </table>
+
+        <h3>Detalles de la Compra</h3>
+        <table class="products-table">
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+            {% for item in productos_detalles %}
+            <tr>
+                <td>{{ item.producto.nombre }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.precio }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="footer">
+        &copy; 2024 Panaderos. Pensamientos panaderos.
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="registro-container">
+    <h2 class="registro-header">Registrar Usuario</h2>
+    <form method="post" action="{{ url_for('registrar') }}">
+        <label for="nombre_usuario">Nombre de Usuario:</label>
+        <input type="text" id="nombre_usuario" name="nombre_usuario" required placeholder="(✿◡‿◡)">
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required placeholder="(❁´◡`❁)">
+
+        <button type="submit">Registrar</button>
+    </form>
+</div>
+{% endblock %}

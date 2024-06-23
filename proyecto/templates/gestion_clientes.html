@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="gestion-clientes-container">
+    <h2 class="gestion-clientes-header">Gestión de Clientes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>Cantidad de Compras</th>
+                <th>Total Gastado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in datos_clientes %}
+            <tr>
+                <td><a href="{{ url_for('detalle_cliente', usuario_id=cliente.id) }}">{{ cliente.nombre_usuario }}</a></td>
+                <td>{{ cliente.cantidad_compras }}</td>
+                <td>{{ cliente.total_gastado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="carrito-container">
+    <h2 class="carrito-header">Carrito de Compras</h2>
+    <ul class="carrito">
+        {% for item in productos_carrito %}
+        <li>
+            <span>{{ item.producto.nombre }} - ${{ item.producto.precio }} - Cantidad: {{ item.cantidad }} - Subtotal: ${{ item.subtotal }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="carrito-total">Total: ${{ total }}</p>
+    <form method="post" action="{{ url_for('comprar') }}">
+        <label for="metodo_pago">Método de Pago:</label>
+        <select id="metodo_pago" name="metodo_pago" onchange="mostrarCamposTarjeta()">
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+        </select>
+        <input type="hidden" name="total" value="{{ total }}">
+        
+        <div class="tarjeta-info" id="tarjeta-info">
+            <label for="numero_tarjeta">Número de Tarjeta:</label>
+            <input type="text" id="numero_tarjeta" name="numero_tarjeta" placeholder="1234 5678 9101 1121">
+            
+            <label for="fecha_expiracion">Fecha de Expiración:</label>
+            <input type="text" id="fecha_expiracion" name="fecha_expiracion" placeholder="MM/AA">
+            
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="123">
+        </div>
+        
+        <div class="carrito-actions">
+            <button type="submit">Comprar</button>
+            <button type="button" onclick="window.location.href='{{ url_for('index') }}'">Seguir Comprando</button>
+        </div>
+    </form>
+</div>
+
+<script>
+function mostrarCamposTarjeta() {
+    var metodoPago = document.getElementById('metodo_pago').value;
+    var tarjetaInfo = document.getElementById('tarjeta-info');
+    
+    if (metodoPago === 'tarjeta') {
+        tarjetaInfo.style.display = 'block';
+    } else {
+        tarjetaInfo.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

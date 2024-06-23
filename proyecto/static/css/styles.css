@@ -1,0 +1,1056 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #6A1B9A; /* Morado */
+    color: white;
+    padding-top: 0px; /* Reducir solo el padding superior */
+    padding-bottom: 14px; /* Mantener el padding inferior */
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5em;
+    margin: 0;
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    color: #6A1B9A;
+}
+
+button, input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #303F9F; /* Azul */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #283593; /* Azul oscuro */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input[type="text"], form input[type="password"], form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo de lista de productos */
+ul.productos {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.productos li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul.productos li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+ul.productos li img {
+    max-width: 100px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+ul.productos li .producto-info {
+    flex-grow: 1;
+}
+
+.stock {
+    font-weight: bold;
+}
+
+.low-stock {
+    color: red;
+}
+
+ul.productos li span {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+ul.productos li button {
+    margin-left: 10px;
+}
+
+a {
+    color: #6A1B9A; /* Morado */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #6A1B9A; /* Morado */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para el carrito */
+ul.carrito {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.carrito li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul.carrito li span {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.carrito-total {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.carrito-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilos específicos para la tabla de gestión de clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #303F9F; /* Azul */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para las imágenes de los productos */
+ul.productos li img {
+    max-width: 100px;
+    border-radius: 5px;
+}
+
+/* Estilos para el detalle de compras */
+ul.detalles {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.detalles li {
+    background: #fff;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #6A1B9A; /* Morado */
+}
+
+.detalle-compra {
+    margin-bottom: 15px;
+}
+
+.detalle-compra p {
+    font-weight: bold;
+    color: #6A1B9A; /* Morado */
+    margin: 0;
+}
+
+.detalle-compra ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+}
+
+.detalle-compra ul li {
+    margin: 5px 0;
+}
+
+/* Estilos para la gestión de clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #6A1B9A; /* Morado */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e6e6e6;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+td a {
+    color: #6A1B9A; /* Morado */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes adicionales */
+.gestion-clientes-header {
+    font-size: 1.5em;
+    color: #6A1B9A;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gestion-clientes-container {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+/* Estilos para el área de administrador */
+.administrador-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.administrador-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.administrador-container h3 {
+    color: #6A1B9A;
+    margin-top: 20px;
+    font-family: 'Pacifico', cursive; /* Nueva fuente */
+    font-size: 1.8em; /* Tamaño de la fuente aumentado */
+}
+
+.administrador-container .gestion-usuarios-header {
+    text-align: center; /* Centrar solo "Gestión de Usuarios" */
+}
+
+.administrador-container a {
+    color: #6A1B9A;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.administrador-container a:hover {
+    text-decoration: underline;
+}
+
+.administrador-container .btn-link {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #6A1B9A;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.administrador-container .btn-link:hover {
+    background-color: #53297D;
+}
+
+.administrador-container .link-gestion {
+    display: inline-block;
+    margin: 10px 0;
+    color: #6A1B9A;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Georgia', serif; /* Nueva fuente */
+    font-size: 1.2em; /* Tamaño de la fuente aumentado */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.administrador-container .link-gestion::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #6A1B9A;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.administrador-container .link-gestion:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+ul.productos {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.productos li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #6A1B9A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+ul.productos li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    color: #6A1B9A;
+}
+
+ul.productos li span {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+ul.productos li button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #311f4e; /* cambiar color carrito productos */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+ul.productos li button:hover {
+    background-color: #283593;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+
+
+
+
+/* Estilos para añadir producto */
+.agregar-producto-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.agregar-producto-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.agregar-producto-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6A1B9A;
+}
+
+.agregar-producto-container input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.agregar-producto-container input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #6A1B9A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agregar-producto-container input[type="submit"]:hover {
+    background-color: #53297D;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.login-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A1B9A;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #303F9F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #283593;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+@keyframes borderAnimation {
+    0% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+    25% {
+        border-color: rgba(48, 63, 159, 1);
+    }
+    50% {
+        border-color: rgba(41, 121, 255, 1);
+    }
+    75% {
+        border-color: rgba(29, 233, 182, 1);
+    }
+    100% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 4px solid; /* Aumentar el ancho del borde */
+    border-radius: 5px;
+    box-sizing: border-box;
+    animation: borderAnimation 5s linear infinite;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.login-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A1B9A;
+}
+
+/* Placeholder style */
+.login-container input[type="text"]::placeholder,
+.login-container input[type="password"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #303F9F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #283593;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+    25% {
+        border-color: rgba(48, 63, 159, 1);
+    }
+    50% {
+        border-color: rgba(41, 121, 255, 1);
+    }
+    75% {
+        border-color: rgba(29, 233, 182, 1);
+    }
+    100% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 4px solid; /* Aumentar el ancho del borde */
+    border-radius: 5px;
+    box-sizing: border-box;
+    animation: borderAnimation 5s linear infinite;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.login-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A1B9A;
+}
+
+/* Placeholder style */
+.login-container input[type="text"]::placeholder,
+.login-container input[type="password"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #1fd1f9, #76fc73);
+    background-size: 600% 600%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: box-shadow 0.3s ease;
+    animation: gradientAnimation 8s ease infinite;
+    -webkit-transition: box-shadow 0.3s ease;
+    -moz-transition: box-shadow 0.3s ease;
+    -ms-transition: box-shadow 0.3s ease;
+    -o-transition: box-shadow 0.3s ease;
+}
+
+.login-container button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*  registo de usario */
+
+@keyframes borderAnimation {
+    0% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+    25% {
+        border-color: rgba(48, 63, 159, 1);
+    }
+    50% {
+        border-color: rgba(41, 121, 255, 1);
+    }
+    75% {
+        border-color: rgba(29, 233, 182, 1);
+    }
+    100% {
+        border-color: rgba(106, 27, 154, 1);
+    }
+}
+
+.registro-container input[type="text"],
+.registro-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 4px solid; /* Aumentar el ancho del borde */
+    border-radius: 5px;
+    box-sizing: border-box;
+    animation: borderAnimation 5s linear infinite;
+}
+
+.registro-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.registro-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registro-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A1B9A;
+}
+
+/* Placeholder style */
+.registro-container input[type="text"]::placeholder,
+.registro-container input[type="password"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.registro-container button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #1fd1f9, #76fc73);
+    background-size: 600% 600%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: box-shadow 0.3s ease;
+    animation: gradientAnimation 8s ease infinite;
+}
+
+.registro-container button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+@keyframes colorAnimation {
+    0% {
+        background-color: #6A1B9A; /* Morado */
+    }
+    25% {
+        background-color: #9C27B0; /* Otro tono de morado */
+    }
+    50% {
+        background-color: #AB47BC; /* Otro tono de morado */
+    }
+    75% {
+        background-color: #BA68C8; /* Otro tono de morado */
+    }
+    100% {
+        background-color: #6A1B9A; /* Volver al morado */
+    }
+}
+
+/* Botón Añadir al Carrito */
+button, input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #6A1B9A; /* Morado */
+    color: white;
+    border: 2px solid #6A1B9A;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    animation: colorAnimation 2s infinite;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+button:active, input[type="submit"]:active {
+    transform: scale(1);
+}
+
+
+
+/* Estilos específicos para el carrito */
+.carrito-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.carrito-header {
+    font-family: 'Pacifico', cursive;
+    color: #6A1B9A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul.carrito {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.carrito li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #6A1B9A;
+}
+
+ul.carrito li span {
+    flex-grow: 1;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.carrito-total {
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: right;
+    color: #6A1B9A;
+}
+
+.carrito-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.carrito-actions button {
+    padding: 10px 20px;
+    background-color: #6A1B9A; /* Morado */
+    color: white;
+    border: 2px solid #6A1B9A;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.carrito-actions button:hover {
+    background-color: rgb(255, 105, 180); /* Rosa caliente para animación */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.carrito-actions button:active {
+    transform: scale(1);
+}
+
+.carrito-actions select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #6A1B9A;
+    background-color: white;
+    color: #6A1B9A;
+    font-weight: bold;
+}
+
+/* Estilos personalizados para el select */
+.carrito-container select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #6A1B9A; /* Morado */
+    background-color: white;
+    color: #6A1B9A; /* Morado */
+    font-weight: bold;
+    font-size: 1em;
+    appearance: none; /* Elimina el estilo por defecto */
+    -webkit-appearance: none; /* Safari y Chrome */
+    -moz-appearance: none; /* Firefox */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.carrito-container select:hover {
+    background-color: #f0f0f0;
+}
+
+.carrito-container select option {
+    background-color: white;
+    color: #6A1B9A; /* Morado */
+    font-weight: bold;
+}
+
+/* Icono personalizado para el dropdown */
+.carrito-container select::after {
+    content: '\25BC'; /* Triángulo hacia abajo */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6A1B9A; /* Morado */
+}
+
+/* Estilos personalizados para la etiqueta del select */
+.carrito-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A1B9A; /* Morado */
+    font-family: 'Pacifico', cursive; /* Cambiar la fuente */
+    font-size: 1.2em; /* Aumentar el tamaño de la fuente */
+}
+
+
+/* Estilos para los campos de la tarjeta */
+.tarjeta-info {
+    display: none;
+    margin-top: 20px;
+}
+
+.tarjeta-info input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.agotado {
+    color: red;
+    font-weight: bold;
+}
+
+/* Agregar estilos adicionales si es necesario */

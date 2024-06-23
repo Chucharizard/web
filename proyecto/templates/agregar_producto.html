@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="agregar-producto-container">
+    <h2 class="agregar-producto-header">Añadir Producto</h2>
+    <form method="post" action="{{ url_for('agregar_producto') }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <br>
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" name="precio">
+        <br>
+        <label for="cantidad">Cantidad:</label>
+        <input type="text" id="cantidad" name="cantidad">
+        <br>
+        <input type="submit" value="Añadir Producto">
+    </form>
+</div>
+{% endblock %}

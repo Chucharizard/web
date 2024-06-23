@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="login-container">
+    <h2 class="login-header">Iniciar Sesión</h2>
+    <form method="post" action="{{ url_for('iniciar_sesion') }}">
+        <label for="nombre_usuario">Nombre de Usuario:</label>
+        <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="☆*: .｡. o(≧▽≦)o .｡.:*☆" required>
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" placeholder="༼ つ ◕_◕ ༽つ" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="administrador-container">
+    <h2 class="administrador-header">Área de Administrador</h2>
+    <p>Desde aquí puedes gestionar los productos, inventario, ventas y clientes.</p>
+
+    <h3>Productos</h3>
+    <a href="{{ url_for('agregar_producto') }}" class="btn-link">Añadir Producto</a>
+    <ul class="productos">
+        {% for producto in productos %}
+        <li>
+            <span>{{ producto.nombre }} - ${{ producto.precio }} - Cantidad: {{ producto.cantidad }}</span>
+            <a href="{{ url_for('actualizar_producto', producto_id=producto.id) }}"><button>Actualizar</button></a>
+            <form method="post" action="{{ url_for('eliminar_producto', producto_id=producto.id) }}" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="gestion-usuarios-header">Gestión de Usuarios</h3>
+    <a href="{{ url_for('gestion_clientes') }}" class="link-gestion">Gestionar Usuarios</a>
+</div>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="invoice-box">
+    <h2 class="invoice-header">Factura</h2>
+    <div class="invoice-info">
+        <p><strong>Fecha de Compra:</strong> {{ fecha }}</p>
+        <p><strong>Comprador:</strong> {{ usuario }}</p>
+        <p><strong>Método de Pago:</strong> {{ compra.metodo_pago }}</p>
+
+        {% if compra.metodo_pago == 'efectivo' %}
+        <p><strong>Descuento aplicado:</strong> ${{ '{:.2f}'.format(descuento) }}</p>
+        {% elif compra.metodo_pago == 'tarjeta' %}
+        <p><strong>Incremento aplicado:</strong> ${{ '{:.2f}'.format(incremento) }}</p>
+        {% endif %}
+
+        <p><strong>Total Pagado:</strong> ${{ '{:.2f}'.format(compra.total) }}</p>
+    </div>
+    <h3 class="invoice-details-header">Detalles de la Compra</h3>
+    <ul class="invoice-details">
+        {% for item in productos_detalles %}
+        <li>
+            <span>{{ item.producto.nombre }} - Cantidad: {{ item.cantidad }} - Precio: ${{ item.precio }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="invoice-actions">
+        <a href="{{ url_for('descargar_factura', compra_id=compra.id) }}" class="btn">Descargar Factura en PDF</a>
+        <a href="{{ url_for('index') }}" class="btn">Volver a la Página Principal</a>
+    </div>
+</div>
+{% endblock %}
+
+
+

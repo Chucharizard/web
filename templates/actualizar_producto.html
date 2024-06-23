@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Actualizar Producto</h2>
+<form method="post" action="{{ url_for('actualizar_producto', producto_id=producto.id) }}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}">
+    <br>
+    <label for="precio">Precio:</label>
+    <input type="text" id="precio" name="precio" value="{{ producto.precio }}">
+    <br>
+    <label for="cantidad">Cantidad:</label>
+    <input type="text" id="cantidad" name="cantidad" value="{{ producto.cantidad }}">
+    <br>
+    <input type="submit" value="Actualizar Producto">
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="invoice-box">
+    <h2>Factura</h2>
+    <p><strong>Fecha de Compra:</strong> {{ fecha }}</p>
+    <p><strong>Comprador:</strong> {{ usuario }}</p>
+    <p><strong>Método de Pago:</strong> {{ compra.metodo_pago }}</p>
+
+    {% if compra.metodo_pago == 'efectivo' %}
+    <p><strong>Descuento aplicado:</strong> ${{ descuento }}</p>
+    {% elif compra.metodo_pago == 'tarjeta' %}
+    <p><strong>Incremento aplicado:</strong> ${{ incremento }}</p>
+    {% endif %}
+
+    <p><strong>Total Pagado:</strong> ${{ compra.total }}</p>
+
+    <h3>Detalles de la Compra</h3>
+    <ul>
+        {% for item in productos_detalles %}
+        <li>
+            <span>{{ item.producto.nombre }} - Cantidad: {{ item.cantidad }} - Precio: ${{ item.precio }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('descargar_factura', compra_id=compra.id) }}">Descargar Factura en PDF</a>
+    <a href="{{ url_for('index') }}">Volver a la Página Principal</a>
+</div>
+{% endblock %}
+
+
